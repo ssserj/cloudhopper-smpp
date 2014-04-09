@@ -149,6 +149,7 @@ public class DefaultSmppServerTest {
             Assert.assertEquals(false, serverSession0.isBound());
         } finally {
             server0.destroy();
+            Thread.sleep(500);
         }
     }
 
