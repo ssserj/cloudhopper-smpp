@@ -31,6 +31,7 @@ import com.cloudhopper.smpp.type.SmppChannelException;
 import com.cloudhopper.smpp.type.SmppProcessingException;
 import com.cloudhopper.smpp.type.SmppTimeoutException;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,7 +51,12 @@ public class DefaultSmppServerTest {
     public static final String SYSTEMID = "smppclient1";
     public static final String PASSWORD = "password";
 
-    private TestSmppServerHandler serverHandler = new TestSmppServerHandler();
+    private TestSmppServerHandler serverHandler;
+
+    @Before
+    public void setUp() throws Exception {
+        serverHandler = new TestSmppServerHandler();
+    }
 
     public SmppServerConfiguration createSmppServerConfiguration() {
         SmppServerConfiguration configuration = new SmppServerConfiguration();
