@@ -149,7 +149,6 @@ public class DefaultSmppServerTest {
             Assert.assertEquals(false, serverSession0.isBound());
         } finally {
             server0.destroy();
-            Thread.sleep(500);
         }
     }
 
@@ -555,11 +554,11 @@ public class DefaultSmppServerTest {
                 // worker thread were "starved"
                 logger.debug("Correctly received SmppChannelException during bind");
             }
-            
-        } finally {
+
             Thread.sleep(10500);
             Assert.assertEquals(0, server0.getChannels().size());
             Assert.assertEquals(3, server0.getCounters().getBindTimeouts());
+        } finally {
             server0.destroy();
         }
     }
