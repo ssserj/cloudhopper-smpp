@@ -265,14 +265,11 @@ public class DefaultSmppServer implements SmppServer, DefaultSmppServerMXBean {
         this.channels.close().awaitUninterruptibly();
         // clean up all external resources
         if (this.serverChannel != null) {
-	    try {
-		/// this.serverChannel.close().awaitUninterruptibly();
-		this.serverChannel.close().sync(); 
-		this.serverChannel = null;
-	    } catch (InterruptedException e) {
-		logger.warn("Thread interrupted closing server channel.", e);
-	    }
+            /// this.serverChannel.close().sync()
+            this.serverChannel.close().awaitUninterruptibly();
+            this.serverChannel = null;
         }
+
         logger.info("{} stopped on SMPP port [{}]", configuration.getName(), configuration.getPort());
     }
 
